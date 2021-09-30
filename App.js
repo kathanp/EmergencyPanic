@@ -1,21 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Tabs from './screens/tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {DrawerContent} from './screens/DrawerContentScreen';
+import  { useEffect } from 'react';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  TextInput,
+  Platform,
+  StyleSheet ,
+  StatusBar,
+  Alert,
+  SafeAreaView,
+  Button,
+} from 'react-native';
 
-export default function App() {
+const Drawer = createDrawerNavigator();
+
+
+import AccountScreen from './screens/AccountScreen';
+import HomeScreen from './screens/HomeScreen';
+import RootStackScreen from './screens/RootStackScreen';
+import { set } from 'react-native-reanimated';
+
+
+
+const  App = () => {
+
+  const [isLoading, setIsLoading] = React.useState(true);
+  // const [userToken, setUserToken] = React.useState(null); 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+
+        <RootStackScreen />
+        {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+          <Drawer.Screen name="Home" component={Tabs} />
+        </Drawer.Navigator> */}
+      </NavigationContainer>
+  
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
