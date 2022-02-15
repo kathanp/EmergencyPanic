@@ -12,6 +12,7 @@ const HomeScreen = ({navigation}) => {
       <View style={styles.container}>
         <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
         <Text style={{color: colors.text}}>Home Screen</Text>
+        <view>kathan</view>
       
       </View>
     );
